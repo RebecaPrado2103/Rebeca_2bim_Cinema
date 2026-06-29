@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cinema online</title>
+    <link rel="stylesheet" href="Cinema.css">
+    
+</head>
+
+<body>
+    <header>
+        <h1>SITE CINEMA</h1>   
+    </header>
+
+    <div class="container">
+        <h3>Bem-vindo(a) <span id="resNome"></span>!</h3>
+        <p>Explore nossa plataforma e pesquise os filmes que desejar</p>
+
+        <div class="campo-pesquisa">
+            <div class="campo-grupo">
+                <label for="inputFilme">Nome do filme:</label>
+                <input type="text" id="inputFilme" oninput="BuscarF()">
+            </div>
+
+            <div class="campo-grupo">
+                <label for="inputGenero">Gênero do filme:</label>
+                <select id="inputGenero" onchange="BuscarG()">
+                    <option value="Selecione uma opção">--Selecione uma opção--</option>
+                    <option value="Comedia">Comédia</option>
+                    <option value="Fantasia">Fantasia</option>
+                    <option value="Animacao">Animação</option>
+                    <option value="Acao">Ação</option>
+                    <option value="Romance">Romance</option>
+                    <option value="Aventura">Aventura</option>
+                </select>
+            </div>
+
+            <div class="campo-grupo">
+                <label for="inputIdade">Classificação:</label>
+                <select id="inputIdade" onchange="BuscarC()">
+                    <option>--Selecione uma opção--</option>
+                    <option value="Livre">Livre</option>
+                    <option value="10">Maiores de 10 anos</option>
+                    <option value="12">Maiores de 12 anos</option>
+                </select>  
+            </div>
+        </div>  
+        
+        <div id="resultadoPesquisa" class ="filmes">
+            <p><strong>• Filmes disponíveis:</strong></p>
+            <div class="movies">
+                <div class="opcao">
+                   <img src="./imagens/Compadecida.jpg" alt="AltoCompadecida">
+                   <p><strong>O Auto da Compadecida</strong></p> 
+                </div>
+                <div class="opcao">
+                    <img src="./imagens/StarWars.jpeg" alt="StarWars">
+                    <p><strong>Star Wars: A Vingança dos Sith</strong></p>
+                </div>
+                <div class="opcao">
+                    <img src="./imagens/Frozen.jpg" alt="Frozen">
+                    <p><strong>Frozen</strong></p>
+                </div> 
+                <div class="opcao">
+                    <img src="./imagens/Aranha.jpg" alt="Homem Aranha">
+                    <p><strong>Homem-Aranha: De Volta ao Lar</strong></p>
+                </div>
+                <div class="opcao">
+                    <img src="./imagens/Amor.jpg" alt="Como eu era antes de você">
+                    <p><strong>Como Eu Era Antes de Você</strong></p>
+                </div>
+                <div class="opcao">
+                    <img src="./imagens/Barbie.png" alt="Barbie">
+                    <p><strong>Barbie: Escola de Princesas</strong></p>
+                </div>
+                <div class="opcao">
+                    <img src="./imagens/Harry.jpg" alt="Harry Potter">
+                    <p><strong>Harry Potter e a Pedra Filosofal</strong></p>
+                </div> 
+                <div class="opcao">
+                    <img src="./imagens/Vingadores.jpg" alt="Vingadores">
+                    <p><strong>Vingadores: Ultimato</strong></p>
+                </div> 
+                <div class="opcao">
+                    <img src="./imagens/titanic.jpg" alt="titanic">
+                    <p><strong>Titanic</strong></p>
+                </div>
+                <div class="opcao">
+                    <img src="./imagens/esqueceram.png" alt="esqueceram de mim">
+                    <p><strong>Esqueceram de Mim</strong></p>
+                </div>
+                <div class="opcao">
+                    <img src="./imagens/Leão.jpg" alt="rei leão">
+                    <p><strong>O Rei Leão</strong></p>
+                </div>
+                <div class="opcao">
+                    <img src="./imagens/Jurassic.jpg" alt="Jurassic">
+                    <p><strong>Jurassic Park</strong></p>
+                </div>
+                <div class="opcao">
+                    <img src="./imagens/TopGun.png" alt="TopGun">
+                    <p><strong>Top Gun: Maverick</strong></p>
+                </div>
+                <div class="opcao">
+                    <img src="./imagens/Aneis.jpg" alt="Senhor dos Aneis">
+                    <p><strong>O Senhor dos Aneis: A Sociedade do Anel</strong></p>
+                </div>
+                <div class="opcao">
+                    <img src="./imagens/missao.jpg" alt="Missao Impossivel">
+                    <p><strong>Missão Impossível: Efeito Fallout</strong></p>
+                </div>
+                <div class="opcao">
+                    <img src="./imagens/shrek.jpg" alt="Shrek">
+                    <p><strong>Shrek</strong></p>
+                </div>
+                <div class="opcao">
+                    <img src="./imagens/narnia.jpg" alt="Narnia">
+                    <p><strong>As Crônicas de Nárnia</strong></p>
+                </div>
+                <div class="opcao">
+                    <img src="./imagens/Piratas.jpg" alt="Piratas">
+                    <p><strong>Piratas do Caribe: A Maldição da Pérola Negra</strong></p>
+                </div>
+                <div class="opcao">
+                    <img src="./imagens/Barbie1.jpg" alt="Barbie Moda">
+                    <p><strong>Barbie: Moda e Magia</strong></p>
+                </div>
+                <div class="opcao">
+                    <img src="./imagens/HomemAranha.jpg" alt="Homem-Aranha">
+                    <p><strong>Homem-Aranha: Sem Volta Para Casa</strong></p>
+                </div>     
+            </div>
+        </div><br>
+        
+        
+        <button onclick="voltar()">Voltar</button>
+    
+    </div>
+
+    <footer id="footer">
+        <p><strong>Rebeca Prado da Silva</strong></p>
+    </footer>
+
+    <script>
+        window.onload = function() {
+        // Captura os parâmetros da URL enviados via GET pelo index.html
+            const urlParams = new URLSearchParams(window.location.search);
+    
+            const nome = urlParams.get('nome');
+
+            // Preenchimento dos dados no documento HTML
+            document.getElementById('resNome').textContent = nome;
+        };
+
+        function voltar(){
+        window.location.href = "Entrar.html";
+        }
+
+        // Configuração do servidor (fácil de entender para iniciantes)
+        const enderecoServidor = 'localhost';
+        const porta = '3001';
+
+        // Função para enviar mensagem via POST
+        async function BuscarF() {
+            // 1. Pegar o que o usuário digitou
+            const filme = document.getElementById('inputFilme').value.trim();
+            
+            const bilheteJSON = {
+                filme: filme
+            };
+
+            try {
+                // 4. Enviar o bilhete para a Servidorina usando POST
+                const resposta = await fetch(`http://${enderecoServidor}:${porta}/api/mensagens`, {
+                    method: 'POST',              // Método POST (enviar dados)
+                    headers: {
+                        'Content-Type': 'application/json',  // Diz que estamos enviando JSON
+                    },
+                    body: JSON.stringify(bilheteJSON)       // Converte o objeto para texto JSON
+                });
+                
+                // 5. Converter a resposta da Servidorina para JSON
+                const dados = await resposta.json();
+
+                // 6. Mostrar a resposta na tela
+                if (dados.status === "sucesso") {
+                    // Formata a resposta para mostrar quebras de linha
+                    const mensagemFormatada = dados.mensagem.replace(/\n/g, '<br>');
+                    document.getElementById('resultadoPesquisa').innerHTML = `
+                        <div class="sucesso">
+                            ${mensagemFormatada}
+                        </div>
+                    `;
+                } else {
+                    document.getElementById('resultadoPesquisa').innerHTML = `<div class="erro">❌ ${dados.mensagem}</div>`;
+                }
+                
+            } catch (erro) {
+                // 8. Se algo deu errado na comunicação
+                console.error('Erro:', erro);
+                document.getElementById('resultadoPesquisa').innerHTML = '<div class="erro">❌ Erro de conexão com o servidor</div>';
+            }
+        }
+
+        async function BuscarG() {
+            // 1. Pegar o que o usuário digitou
+            const genero = document.getElementById('inputGenero').value.trim();
+            
+            // 2. Verificar se não está vazio
+            if (!genero) {
+                document.getElementById('resultadoPesquisa').innerHTML = '<div class="erro">❌ Faça uma pesquisa</div>';
+                return;
+            }
+
+            const generoJSON = {
+                genero: genero
+            };
+
+            try {
+                // 4. Enviar o bilhete para a Servidorina usando POST
+                const resposta = await fetch(`http://${enderecoServidor}:${porta}/api/genero`, {
+                    method: 'POST',              // Método POST (enviar dados)
+                    headers: {
+                        'Content-Type': 'application/json',  // Diz que estamos enviando JSON
+                    },
+                    body: JSON.stringify(generoJSON)       // Converte o objeto para texto JSON
+                });
+                
+                // 5. Converter a resposta da Servidorina para JSON
+                const dados = await resposta.json();
+
+                // 6. Mostrar a resposta na tela
+                if (dados.status === "sucesso") {
+                    // Formata a resposta para mostrar quebras de linha
+                    const mensagemFormatada = dados.mensagem.replace(/\n/g, '<br>');
+                    document.getElementById('resultadoPesquisa').innerHTML = `
+                        <div class="sucesso">
+                            ${mensagemFormatada}
+                        </div>
+                    `;
+                } else {
+                    document.getElementById('resultadoPesquisa').innerHTML = `<div class="erro">❌ ${dados.mensagem}</div>`;
+                }
+                
+            } catch (erro) {
+                // 8. Se algo deu errado na comunicação
+                console.error('Erro:', erro);
+                document.getElementById('resultadoPesquisa').innerHTML = '<div class="erro">❌ Erro de conexão com o servidor</div>';
+            }
+        }
+
+        async function BuscarC() {
+            // 1. Pegar o que o usuário digitou
+            const idade = document.getElementById('inputIdade').value.trim();
+            
+            // 2. Verificar se não está vazio
+            if (!idade) {
+                document.getElementById('resultadoPesquisa').innerHTML = '<div class="erro">❌ Faça uma pesquisa</div>';
+                return;
+            }
+
+            const idadeJSON = {
+                idade: idade
+            };
+
+            try {
+                // 4. Enviar o bilhete para a Servidorina usando POST
+                const resposta = await fetch(`http://${enderecoServidor}:${porta}/api/idade`, {
+                    method: 'POST',              // Método POST (enviar dados)
+                    headers: {
+                        'Content-Type': 'application/json',  // Diz que estamos enviando JSON
+                    },
+                    body: JSON.stringify(idadeJSON)       // Converte o objeto para texto JSON
+                });
+                
+                // 5. Converter a resposta da Servidorina para JSON
+                const dados = await resposta.json();
+
+                // 6. Mostrar a resposta na tela
+                if (dados.status === "sucesso") {
+                    // Formata a resposta para mostrar quebras de linha
+                    const mensagemFormatada = dados.mensagem.replace(/\n/g, '<br>');
+                    document.getElementById('resultadoPesquisa').innerHTML = `
+                        <div class="sucesso">
+                            ${mensagemFormatada}
+                        </div>
+                    `;
+                } else {
+                    document.getElementById('resultadoPesquisa').innerHTML = `<div class="erro">❌ ${dados.mensagem}</div>`;
+                }
+                
+            } catch (erro) {
+                // 8. Se algo deu errado na comunicação
+                console.error('Erro:', erro);
+                document.getElementById('resultadoPesquisa').innerHTML = '<div class="erro">❌ Erro de conexão com o servidor</div>';
+            }
+        }
+
+    </script>
+</body>
+
+</html>

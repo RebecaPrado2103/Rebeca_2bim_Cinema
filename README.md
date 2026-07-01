@@ -15,6 +15,8 @@ Mais detalhes:
     - Pelo gênero do filme;
     - Pela classificação indicativa;
 
+Além disso, o usuário pode vizualizar a sinopse do filme.
+
 ## Tecnologias
 
 - HTML5
@@ -26,7 +28,7 @@ Mais detalhes:
 
 ## Banco de Dados
 
-No banco de dados foram criadas duas tabelas:
+No banco de dados foram criadas três tabelas:
 
 - **genero**:
     - id_genero INTEGER PRIMARY KEY;
@@ -39,6 +41,11 @@ No banco de dados foram criadas duas tabelas:
     - faixa_etaria INTEGER;
     - imagem VARCHAR(200);
 
+- **sinopse**
+    - id_sinopse INTGER PRIMARY KEY;
+    - filme_sinopse VARCHAR(900);
+    - id_filme INTEGER FOREIGN KEY;
+
 ## Rotas
 
 | Método | Rota | Função |
@@ -46,6 +53,7 @@ No banco de dados foram criadas duas tabelas:
 | POST | /mensagem | Pesquisa por nome |
 | POST | /genero | Pesquisa por gênero |
 | POST | /idade | Pesquisa por classificação |
+| POST | /sinopse | Mostra a sinopse do filme|
 
 ## Como Funciona
 ### Relação entre 'Entar.html' e 'Cinema.html'

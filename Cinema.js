@@ -35,7 +35,7 @@ app.post('/api/mensagens', async (req, res) => {
         const dataHora = `${agora.toLocaleDateString('pt-BR')} ${agora.toLocaleTimeString('pt-BR')}`;
         console.log(`Pesquisa recebida do usuário: ${pesquisaRecebida} - ${dataHora}`);
 
-        const query = `SELECT imagem, nome_filme FROM filmes WHERE UNACCENT(UPPER(nome_filme)) LIKE UNACCENT(UPPER('%${pesquisaRecebida}%'))`;
+        const query = `SELECT id_filme, imagem, nome_filme FROM filmes WHERE UNACCENT(UPPER(nome_filme)) LIKE UNACCENT(UPPER('%${pesquisaRecebida}%'))`;
 
         const result = await pool.query(query);
 
@@ -44,9 +44,9 @@ app.post('/api/mensagens', async (req, res) => {
 
             result.rows.forEach(filmes => {
                 mensagemResposta += `<div class="card-filme">
-                <img src="${filmes.imagem}" width="200">
+                <img src="${filmes.imagem}" width="200" onclick="BuscarS(${filmes.id_filme})">
                 <p>${filmes.nome_filme}</p>
-            </div>`
+                </div>`
             });
 
             return res.status(200).json({
@@ -56,7 +56,7 @@ app.post('/api/mensagens', async (req, res) => {
         }else {
             return res.status(200).json({
                 status: "sucesso",
-                mensagem: "Livro não encontrado"
+                mensagem: "Filme não encontrado"
             });
         }
 
@@ -79,7 +79,7 @@ app.post('/api/genero', async (req, res) => {
         console.log(`Pesquisa recebida do usuário: ${pesquisaRecebida} - ${dataHora}`);
 
         if(pesquisaRecebida === 'Comedia'){
-            const query = `SELECT imagem, f.nome_filme FROM filmes f, genero g
+            const query = `SELECT id_filme, imagem, f.nome_filme FROM filmes f, genero g
             WHERE f.id_genero = g.id_genero
             AND UPPER(g.nome_genero) = UPPER('${pesquisaRecebida}')`;
 
@@ -90,9 +90,9 @@ app.post('/api/genero', async (req, res) => {
 
                 result.rows.forEach(filmes => {
                     mensagemResposta += `<div class="card-filme">
-                    <img src="${filmes.imagem}" width="200">
+                    <img src="${filmes.imagem}" width="200" onclick="BuscarS(${filmes.id_filme})">
                     <p>${filmes.nome_filme}</p>
-                </div>`
+                    </div>`
                 });
 
 
@@ -109,7 +109,7 @@ app.post('/api/genero', async (req, res) => {
         }
 
         if(pesquisaRecebida === 'Fantasia'){
-            const query = `SELECT imagem, f.nome_filme FROM filmes f, genero g
+            const query = `SELECT id_filme, imagem, f.nome_filme FROM filmes f, genero g
             WHERE f.id_genero = g.id_genero
             AND UPPER(g.nome_genero) = UPPER('${pesquisaRecebida}')`;
 
@@ -120,9 +120,9 @@ app.post('/api/genero', async (req, res) => {
 
                 result.rows.forEach(filmes => {
                     mensagemResposta += `<div class="card-filme">
-                    <img src="${filmes.imagem}" width="200">
+                    <img src="${filmes.imagem}" width="200" onclick="BuscarS(${filmes.id_filme})">
                     <p>${filmes.nome_filme}</p>
-                </div>`
+                    </div>`
             });
 
                 return res.status(200).json({
@@ -138,7 +138,7 @@ app.post('/api/genero', async (req, res) => {
         }
 
         if(pesquisaRecebida === 'Animacao'){
-            const query = `SELECT imagem, f.nome_filme FROM filmes f, genero g
+            const query = `SELECT id_filme, imagem, f.nome_filme FROM filmes f, genero g
             WHERE f.id_genero = g.id_genero
             AND UPPER(g.nome_genero) = UPPER('${pesquisaRecebida}')`;
 
@@ -149,9 +149,9 @@ app.post('/api/genero', async (req, res) => {
 
                 result.rows.forEach(filmes => {
                     mensagemResposta += `<div class="card-filme">
-                    <img src="${filmes.imagem}" width="200">
+                    <img src="${filmes.imagem}" width="200" onclick="BuscarS(${filmes.id_filme})">
                     <p>${filmes.nome_filme}</p>
-                </div>`
+                    </div>`
                 });
 
 
@@ -168,7 +168,7 @@ app.post('/api/genero', async (req, res) => {
         }
 
         if(pesquisaRecebida === 'Acao'){
-            const query = `SELECT imagem, f.nome_filme FROM filmes f, genero g
+            const query = `SELECT id_filme, imagem, f.nome_filme FROM filmes f, genero g
             WHERE f.id_genero = g.id_genero
             AND UPPER(g.nome_genero) = UPPER('${pesquisaRecebida}')`;
 
@@ -179,9 +179,9 @@ app.post('/api/genero', async (req, res) => {
 
                 result.rows.forEach(filmes => {
                     mensagemResposta += `<div class="card-filme">
-                    <img src="${filmes.imagem}" width="200">
+                    <img src="${filmes.imagem}" width="200" onclick="BuscarS(${filmes.id_filme})">
                     <p>${filmes.nome_filme}</p>
-                </div>`
+                    </div>`
                 });
 
                 return res.status(200).json({
@@ -197,7 +197,7 @@ app.post('/api/genero', async (req, res) => {
         }
 
         if(pesquisaRecebida === 'Romance'){
-            const query = `SELECT imagem, f.nome_filme FROM filmes f, genero g
+            const query = `SELECT id_filme, imagem, f.nome_filme FROM filmes f, genero g
             WHERE f.id_genero = g.id_genero
             AND UPPER(g.nome_genero) = UPPER('${pesquisaRecebida}')`;
 
@@ -208,9 +208,9 @@ app.post('/api/genero', async (req, res) => {
 
                 result.rows.forEach(filmes => {
                     mensagemResposta += `<div class="card-filme">
-                    <img src="${filmes.imagem}" width="200">
+                    <img src="${filmes.imagem}" width="200" onclick="BuscarS(${filmes.id_filme})">
                     <p>${filmes.nome_filme}</p>
-                </div>`
+                    </div>`
                 });
 
                 return res.status(200).json({
@@ -226,7 +226,7 @@ app.post('/api/genero', async (req, res) => {
         }
 
         if(pesquisaRecebida === 'Aventura'){
-            const query = `SELECT imagem, f.nome_filme FROM filmes f, genero g
+            const query = `SELECT id_filme, imagem, f.nome_filme FROM filmes f, genero g
             WHERE f.id_genero = g.id_genero
             AND UPPER(g.nome_genero) = UPPER('${pesquisaRecebida}')`;
 
@@ -237,9 +237,9 @@ app.post('/api/genero', async (req, res) => {
 
                 result.rows.forEach(filmes => {
                     mensagemResposta += `<div class="card-filme">
-                    <img src="${filmes.imagem}" width="200">
+                    <img src="${filmes.imagem}" width="200" onclick="BuscarS(${filmes.id_filme})">
                     <p>${filmes.nome_filme}</p>
-                </div>`
+                    </div>`
                 });
 
                 return res.status(200).json({
@@ -274,7 +274,7 @@ app.post('/api/idade', async (req, res) => {
         console.log(`Pesquisa recebida do usuário: ${pesquisaRecebida} - ${dataHora}`);
 
         if(pesquisaRecebida === 'Livre'){
-            const query = `SELECT imagem, nome_filme FROM filmes
+            const query = `SELECT id_filme, imagem, nome_filme FROM filmes
             WHERE faixa_etaria is NULL`;
 
             const result = await pool.query(query);
@@ -284,9 +284,9 @@ app.post('/api/idade', async (req, res) => {
 
                 result.rows.forEach(filmes => {
                     mensagemResposta += `<div class="card-filme">
-                    <img src="${filmes.imagem}" width="200">
+                    <img src="${filmes.imagem}" width="200" onclick="BuscarS(${filmes.id_filme})">
                     <p>${filmes.nome_filme}</p>
-                </div>`
+                    </div>`
                 });
 
                 return res.status(200).json({
@@ -302,7 +302,7 @@ app.post('/api/idade', async (req, res) => {
         }
 
         if(pesquisaRecebida === '10'){
-            const query = `SELECT DISTINCT imagem, f.nome_filme FROM filmes f, genero g
+            const query = `SELECT DISTINCT id_filme, imagem, f.nome_filme FROM filmes f, genero g
             WHERE faixa_etaria = 10`;
 
             const result = await pool.query(query);
@@ -312,9 +312,9 @@ app.post('/api/idade', async (req, res) => {
 
                 result.rows.forEach(filmes => {
                     mensagemResposta += `<div class="card-filme">
-                    <img src="${filmes.imagem}" width="200">
+                    <img src="${filmes.imagem}" width="200" onclick="BuscarS(${filmes.id_filme})">
                     <p>${filmes.nome_filme}</p>
-                </div>`
+                    </div>`
                 });
 
                 return res.status(200).json({
@@ -330,7 +330,7 @@ app.post('/api/idade', async (req, res) => {
         }
 
         if(pesquisaRecebida === '12'){
-            const query = `SELECT DISTINCT imagem, f.nome_filme FROM filmes f, genero g
+            const query = `SELECT DISTINCT id_filme, imagem, f.nome_filme FROM filmes f, genero g
             WHERE faixa_etaria = 12`;
 
             const result = await pool.query(query);
@@ -340,9 +340,9 @@ app.post('/api/idade', async (req, res) => {
 
                 result.rows.forEach(filmes => {
                     mensagemResposta += `<div class="card-filme">
-                    <img src="${filmes.imagem}" width="200">
+                    <img src="${filmes.imagem}" width="200" onclick="BuscarS(${filmes.id_filme})">
                     <p>${filmes.nome_filme}</p>
-                </div>`
+                    </div>`
                 });
 
                 return res.status(200).json({
@@ -355,6 +355,46 @@ app.post('/api/idade', async (req, res) => {
                     mensagem: "Filme não encontrado"
                 });
             }
+        }
+
+    } catch (error) {
+        console.error('Erro ao processar mensagem:', error);
+        res.status(500).json({ status: "erro", mensagem: 'Erro interno do Servidor' });
+    }
+});
+
+app.post('/api/sinopse', async (req, res) => {
+    try {
+        const idFilme = req.body.id;
+
+        const agora = new Date();
+        const dataHora = `${agora.toLocaleDateString('pt-BR')} ${agora.toLocaleTimeString('pt-BR')}`;
+        console.log(`ID do filme recebido: ${idFilme} - ${dataHora}`);
+
+        const query = `SELECT f.imagem, f.nome_filme, s.filme_sinopse
+        FROM filmes f
+        JOIN sinopse s
+        ON f.id_filme = s.id_filme
+        WHERE f.id_filme = $1;`;
+
+        const result = await pool.query(query, [idFilme]);
+
+        if (result.rows.length > 0) {
+
+            const filme = result.rows[0];
+
+            return res.status(200).json({
+                status: "sucesso",
+                mensagem: filme.filme_sinopse
+            });
+
+        } else {
+
+            return res.status(200).json({
+                status: "erro",
+                mensagem: "Sinopse não encontrada."
+            });
+
         }
 
     } catch (error) {
